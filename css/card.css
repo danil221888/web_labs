@@ -1,0 +1,82 @@
+
+.game-card {
+  background: var(--card); cursor: pointer;
+  display: flex; flex-direction: column;
+  animation: cardIn .4s ease both; position: relative; transition: background .18s;
+}
+.game-card:hover { background: #1f1f1f; }
+
+@keyframes cardIn {
+  from { opacity:0; transform: translateY(12px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+.game-img-wrap { position: relative; overflow: hidden; }
+.game-img { width: 100%; height: 170px; object-fit: cover; display: block; filter: saturate(.85); transition: filter .3s, transform .4s; }
+.game-card:hover .game-img { filter: saturate(1.05); transform: scale(1.03); }
+.game-img-placeholder { width: 100%; height: 170px; background: #1e1e1e; display: flex; align-items:center; justify-content:center; font-size: 52px; }
+
+.card-num {
+  position: absolute; top: 8px; left: 10px;
+  font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.35);
+  background: rgba(0,0,0,.5); padding: 2px 6px; border-radius: 2px; backdrop-filter: blur(4px);
+}
+.discount-badge {
+  position: absolute; top: 8px; right: 8px;
+  background: var(--red); color: #fff; font-family: var(--cond); font-weight: 700;
+  font-size: 13px; letter-spacing: .05em; padding: 2px 7px; border-radius: 2px;
+}
+
+.card-peek {
+  position: absolute; inset: 0;
+  background: rgba(200,245,62,0.06); border: 1.5px solid var(--accent);
+  opacity: 0; transition: opacity .2s; pointer-events: none;
+}
+.game-card:hover .card-peek { opacity: 1; }
+.card-peek-label {
+  position: absolute; bottom: 8px; right: 10px;
+  font-family: var(--mono); font-size: 9px; color: var(--accent);
+  letter-spacing: .12em; text-transform: uppercase;
+  opacity: 0; transition: opacity .2s .05s;
+}
+.game-card:hover .card-peek-label { opacity: 1; }
+
+.card-heart {
+  position: absolute; bottom: 8px; left: 10px; width: 28px; height: 28px;
+  background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 50%; display: flex; align-items:center; justify-content:center;
+  font-size: 13px; cursor: pointer; color: rgba(255,255,255,.4);
+  transition: color .2s, border-color .2s, transform .15s;
+  backdrop-filter: blur(4px); z-index: 5; line-height: 1;
+}
+.card-heart:hover { color: #ff6b9d; border-color: #ff6b9d; transform: scale(1.15); }
+.card-heart.wishlisted { color: #ff6b9d; border-color: rgba(255,107,157,.4); }
+
+.game-body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; border-top: 1px solid var(--border); }
+.game-genre { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 5px; }
+.game-title { font-family: var(--cond); font-weight: 700; font-size: 18px; letter-spacing: .02em; text-transform: uppercase; color: var(--text); line-height: 1.1; margin-bottom: 3px; }
+.game-dev { font-size: 12px; color: var(--muted); margin-bottom: 10px; font-family: var(--mono); }
+.game-rating { display: flex; align-items:center; gap:5px; margin-bottom: 12px; }
+.stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
+.rating-num { font-family: var(--mono); font-size: 11px; color: var(--muted2); }
+
+.game-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); }
+.game-price { font-family: var(--cond); font-weight: 700; font-size: 22px; color: var(--text); letter-spacing: .02em; line-height: 1.1; }
+.game-price .currency { font-size: 14px; opacity:.7; margin-right:1px; }
+.old-price { font-family: var(--mono); font-size: 11px; color: var(--muted); text-decoration: line-through; display: block; margin-bottom: 1px; }
+.free-label { font-family: var(--mono); font-size: 12px; color: #4ade80; letter-spacing: .06em; }
+
+.add-btn {
+  background: transparent; border: 1px solid var(--border2); border-radius: var(--radius);
+  padding: 7px 13px; color: var(--text); font-family: var(--cond); font-weight: 600;
+  font-size: 12px; letter-spacing: .08em; text-transform: uppercase; cursor: pointer;
+  white-space: nowrap; transition: background .15s, border-color .15s, color .15s; flex-shrink: 0;
+}
+.add-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.add-btn.added { background: #222; border-color: var(--border2); color: var(--muted2); }
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(200,245,62,.5); }
+  100% { box-shadow: 0 0 0 14px rgba(200,245,62,0); }
+}
+.pulse { animation: pulse .45s ease; }

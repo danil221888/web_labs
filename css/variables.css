@@ -1,0 +1,40 @@
+
+:root {
+  --bg:       #0c0c0c;
+  --surface:  #141414;
+  --card:     #181818;
+  --border:   #272727;
+  --border2:  #333;
+  --accent:   #c8f53e;
+  --accent-d: #9bc22a;
+  --red:      #e8392a;
+  --blue:     #3a8bff;
+  --text:     #ececec;
+  --muted:    #666;
+  --muted2:   #999;
+  --gold:     #f0c040;
+  --radius:   4px;
+  --mono: 'DM Mono', monospace;
+  --cond: 'Barlow Condensed', sans-serif;
+  --body: 'Barlow', sans-serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.04) 2px,rgba(0,0,0,0.04) 4px);
+  pointer-events: none;
+  z-index: 9999;
+}
